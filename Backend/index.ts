@@ -11,7 +11,7 @@ import axios from 'axios';
 /* Using express() to return promise when making a request to the given API's by RELISH */
 const externalApiApp = express();
 
-/* Task 01 - External API Endpoint to provide the photo info, ex. /externalapi/photos/1 */
+/* Task 01 - External API Endpoint to provide the photo info, ex. /externalapi/photos/1 - Complete*/
 externalApiApp.get('/externalapi/photos/:id', async (req, res) => {
     const idValue = req.params.id;
 
