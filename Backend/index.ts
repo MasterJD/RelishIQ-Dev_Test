@@ -33,4 +33,4 @@ externalApiApp.get('/externalapi/photos/:id', async (req, res) => {
         res.status(500).json({ error: 'Error getting the photo information.' });
     }
 });
-exports.app = externalApiApp;
+export default externalApiApp;
