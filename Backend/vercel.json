@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/externalapi/photos",
+      "dest": "/index.ts"
+    },
+    {
       "src": "/externalapi/photos/(.*)",
       "dest": "/index.ts"
     }
