@@ -37,6 +37,8 @@ externalApiApp.get('/externalapi/photos/:id', async (req, res) => {
 /* Task 1.2 - The Filtering, implement filters for title, album.title, album.user.email - COMPLETE */
 /* Task 1.3 - The Pagination, restrict the amount of data being requested to the API */
 
+/* TODO: .ENV file with variables */
+
 externalApiApp.get('/externalapi/photos', async (req, res) => {
     const pLimit = (await import('p-limit')).default;
     const requestLimit = pLimit(5);
