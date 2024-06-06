@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbar">
-  <span class="toolbar-title"><strong>Relish IQ</strong></span>
+  <span class="toolbar-title">DevTest - Javier Donado</span>
   <span class="spacer"></span>
   <a href="https://github.com/MasterJD/RelishIQ-Dev_Test/tree/Production" target=”_blank”>
     <button mat-icon-button class="icon" aria-label="icon-button with menu icon">
@@ -26,15 +26,18 @@
         </mat-form-field>
         &nbsp;
     </div>
-    <button mat-raised-button color="primary" (click)="applyFilters()">Apply Filters</button>
-</div>
-<mat-paginator [length]="this.photos.length"
-               [pageSize]="10" 
-               [pageSizeOptions]="[5, 10, 25]"
-               (page)="OnPageChange($event)">
-</mat-paginator>
+    <button class="button" mat-raised-button (click)="applyFilters()">Search Photos</button>
+    <br>
+    <br>
+    <mat-paginator
+      [length]="this.photos.length "
+      [pageSize]="10" 
+      [pageSizeOptions]="[5, 10, 25]"
+      (page)="OnPageChange($event)">
+    </mat-paginator>
+  </div>
 <div class="container responsive-grid">
-  <mat-card *ngFor="let photo of pageSlice">
+  <mat-card class="card" *ngFor="let photo of pageSlice">
       <mat-card-header>
           <mat-card-title class="card-title"><strong>Title: </strong>{{ photo.title }}</mat-card-title>
         </mat-card-header>
@@ -49,7 +52,4 @@
       </mat-card-content>
   </mat-card>
 </div>
-
-
-  
   

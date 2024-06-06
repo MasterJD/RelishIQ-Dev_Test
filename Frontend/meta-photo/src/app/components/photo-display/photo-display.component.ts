@@ -38,6 +38,7 @@ export class PhotoDisplayComponent {
   limit: number = 25;
   offset: number = 0;
   total: number = 0;
+  show: boolean = false;
 
   constructor(private apiService: ExternalapiService) {}
   public pageSlice: any;
@@ -61,6 +62,7 @@ export class PhotoDisplayComponent {
   applyFilters(): void {
     this.offset = 0;
     this.loadPhotos();
+    this.show = true;
   }
 
   OnPageChange(event: any): void {
