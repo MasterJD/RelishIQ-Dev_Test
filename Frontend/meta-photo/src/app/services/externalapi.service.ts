@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExternalapiService {
 
-  private baseUrl = environment.apiUrl + '/externalapi'; // Replace with your Vercel backend URL
+export class ExternalapiService {
+  private baseUrl = 'externalapi'; // Replace with your Vercel backend URL
 
   constructor(private http: HttpClient) {}
 

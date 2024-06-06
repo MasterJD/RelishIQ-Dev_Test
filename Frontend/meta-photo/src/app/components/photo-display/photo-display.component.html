@@ -1,0 +1,32 @@
+<div class="main-container">
+    <div class="form-row-container">
+        <mat-form-field>
+          <input matInput placeholder="Photo Title" [(ngModel)]="titleFilter">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Album Title" [(ngModel)]="albumTitleFilter">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="User Email" [(ngModel)]="userEmailFilter">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="applyFilters()">Apply Filters</button>
+    </div>
+    <div class="cards-row-container">
+        <mat-card class="thumbnail" *ngFor="let photo of photos">
+            <mat-card-header>
+                <mat-card-title>{{ photo.title }}</mat-card-title>
+              </mat-card-header>
+            <img mat-card-image [src]="photo.thumbnailUrl" alt="{{ photo.title }}">
+            <mat-card-content>
+                <p matLine>Album: {{ photo.album.title }}</p>
+                <p matLine>User: {{ photo.album.user.email }}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+
+
+  
+<mat-paginator [length]="total" [pageSize]="limit" (page)="changePage($event)"></mat-paginator>
+  
