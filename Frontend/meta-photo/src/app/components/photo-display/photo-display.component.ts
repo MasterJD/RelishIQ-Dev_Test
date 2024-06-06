@@ -7,7 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { ViewChild } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbar } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-photo-display',
@@ -19,7 +22,9 @@ import { ViewChild } from '@angular/core';
     FormsModule,
     MatInputModule,
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatToolbar,
   ],
   templateUrl: './photo-display.component.html',
   styleUrl: './photo-display.component.css'
@@ -34,13 +39,8 @@ export class PhotoDisplayComponent {
   offset: number = 0;
   total: number = 0;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator; // Add this
-
   constructor(private apiService: ExternalapiService) {}
-
-  ngOnInit(): void {
-    this.loadPhotos();
-  }
+  public pageSlice: any;
 
   loadPhotos(): void {
     const params = {
@@ -53,19 +53,23 @@ export class PhotoDisplayComponent {
 
     this.apiService.getPhotos(params).subscribe(data => {
       this.photos = data;
-      this.total = data.total
+      this.pageSlice = this.photos.slice(0, 10);
     });
+
   }
 
   applyFilters(): void {
     this.offset = 0;
     this.loadPhotos();
-    this.paginator.firstPage();
   }
 
-  changePage(event: any): void {
-    this.offset = event.pageIndex * event.pageSize;
-    this.limit = event.pageSize;
-    this.loadPhotos();
+  OnPageChange(event: any): void {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+
+    if(endIndex > this.photos.length){
+      endIndex = this.photos.length;
+    }
+    this.pageSlice = this.photos.slice(startIndex, endIndex);
   }
 }

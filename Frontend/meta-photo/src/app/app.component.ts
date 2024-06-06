@@ -4,6 +4,8 @@ import { PhotoDisplayComponent } from './components/photo-display/photo-display.
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatListModule} from '@angular/material/list';
+import { BrowserModule } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +13,6 @@ import {MatListModule} from '@angular/material/list';
   imports: [
     RouterOutlet,
     PhotoDisplayComponent,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatListModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
