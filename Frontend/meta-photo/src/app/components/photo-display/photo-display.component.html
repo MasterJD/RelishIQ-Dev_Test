@@ -11,8 +11,9 @@
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="applyFilters()">Apply Filters</button>
     </div>
-    <div class="cards-row-container">
-        <mat-card class="thumbnail" *ngFor="let photo of photos">
+    <mat-paginator [length]="total" [pageSize]="limit" (page)="changePage($event)"></mat-paginator>
+    <div class="container responsive-grid">
+        <mat-card *ngFor="let photo of photos">
             <mat-card-header>
                 <mat-card-title>{{ photo.title }}</mat-card-title>
               </mat-card-header>
@@ -28,5 +29,4 @@
 
 
   
-<mat-paginator [length]="total" [pageSize]="limit" (page)="changePage($event)"></mat-paginator>
   

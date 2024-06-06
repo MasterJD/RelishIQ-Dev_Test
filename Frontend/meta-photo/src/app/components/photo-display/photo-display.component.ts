@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { ExternalapiService } from '../../services/externalapi.service';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-photo-display',
@@ -24,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './photo-display.component.css'
 })
 export class PhotoDisplayComponent {
+
   photos: any[] = [];
   titleFilter: string = '';
   albumTitleFilter: string = '';
@@ -31,6 +33,8 @@ export class PhotoDisplayComponent {
   limit: number = 25;
   offset: number = 0;
   total: number = 0;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator; // Add this
 
   constructor(private apiService: ExternalapiService) {}
 
@@ -49,13 +53,14 @@ export class PhotoDisplayComponent {
 
     this.apiService.getPhotos(params).subscribe(data => {
       this.photos = data;
-      // Adjust the total count if the backend returns it; otherwise, manage it client-side.
+      this.total = data.total
     });
   }
 
   applyFilters(): void {
-    this.offset = 0; // Reset offset when filters are applied
+    this.offset = 0;
     this.loadPhotos();
+    this.paginator.firstPage();
   }
 
   changePage(event: any): void {
