@@ -1,0 +1,21 @@
+<h2 mat-dialog-title><strong>{{data.photo.title}}</strong></h2>
+<mat-dialog-content class="mat-typography">
+  <strong>Album Title: </strong>{{data.photo.album.title}}
+  <hr>
+  <strong>Person's Name: </strong>{{data.photo.album.user.name}}
+  <hr>
+  <strong>Person's Username: </strong>{{data.photo.album.user.username}}
+  <hr>
+  <strong>Person's Email: </strong>{{data.photo.album.user.email}}
+  <hr>
+  <strong>Person's Phone No.: </strong>{{data.photo.album.user.phone}}
+  <hr>
+  <strong>Person's Address: </strong>{{data.photo.album.user.address.street}}, {{data.photo.album.user.address.suite}}, {{data.photo.album.user.address.city}}
+  <hr>
+  <strong>Person's Company: </strong>{{data.photo.album.user.company.name}}
+  <hr>
+  <strong>Person's Website: </strong>{{data.photo.album.user.website}}
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

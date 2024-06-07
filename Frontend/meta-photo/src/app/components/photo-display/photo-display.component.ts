@@ -11,7 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbar } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialog, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { PhotoInformationComponent } from '../photo-information/photo-information.component';
+import { MatIconModule } from '@angular/material/icon';
 
+export interface PhotoInfo {
+  photo: any,
+}
 @Component({
   selector: 'app-photo-display',
   standalone: true,
@@ -25,10 +31,12 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     MatCardModule,
     MatButtonModule,
     MatToolbar,
+    MatIconModule
   ],
   templateUrl: './photo-display.component.html',
   styleUrl: './photo-display.component.css'
 })
+
 export class PhotoDisplayComponent {
 
   photos: any[] = [];
@@ -38,10 +46,10 @@ export class PhotoDisplayComponent {
   limit: number = 25;
   offset: number = 0;
   total: number = 0;
-  show: boolean = false;
 
-  constructor(private apiService: ExternalapiService) {}
+  constructor(private apiService: ExternalapiService, public dialog: MatDialog) {}
   public pageSlice: any;
+  public photoInfo: any;
 
   loadPhotos(): void {
     const params = {
@@ -55,14 +63,20 @@ export class PhotoDisplayComponent {
     this.apiService.getPhotos(params).subscribe(data => {
       this.photos = data;
       this.pageSlice = this.photos.slice(0, 10);
+      this.photoInfo = this.photos;
     });
-
+  }
+  openDialog(photo: any): void {
+    this.dialog.open(PhotoInformationComponent, {
+      data: {
+        photo: photo,
+      },
+    });
   }
 
   applyFilters(): void {
     this.offset = 0;
     this.loadPhotos();
-    this.show = true;
   }
 
   OnPageChange(event: any): void {

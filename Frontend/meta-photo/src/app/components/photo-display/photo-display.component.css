@@ -46,3 +46,9 @@ img {
 .card{
     border: 1px solid #7DE2D1;
 }
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  

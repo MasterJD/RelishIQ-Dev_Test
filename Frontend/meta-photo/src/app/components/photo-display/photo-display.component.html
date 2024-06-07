@@ -49,7 +49,14 @@
             <br>
             <strong>User: </strong><a href="">{{ photo.album.user.email }}</a>
           </p>
-      </mat-card-content>
+          <br>
+          <div class="button-container">
+            <button mat-fab extended color="primary" (click)="openDialog(photo)">
+              Check Information
+              <mat-icon>pageview</mat-icon>
+            </button>
+          </div>      
+        </mat-card-content>
   </mat-card>
 </div>
   
