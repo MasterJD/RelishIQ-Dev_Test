@@ -1,7 +1,7 @@
 {
     "/externalapi/*": {
         "target": "https://relishiqmetaphoto-masterjd-masterjds-projects-e3c5d79f.vercel.app",
-        "secure": true,
+        "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
     }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class ExternalapiService {
-  private baseUrl = 'externalapi'; // Replace with your Vercel backend URL
+  private baseUrl = 'https://relishiqmetaphoto-masterjd-masterjds-projects-e3c5d79f.vercel.app/externalapi';
 
   constructor(private http: HttpClient) {}
 

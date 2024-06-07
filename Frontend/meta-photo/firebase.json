@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/meta-photo/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
